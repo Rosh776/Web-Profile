@@ -3,45 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Photography Journey</title>
+    <title>Roshan Roy | Photography Portfolio</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Ambient Audio -->
-    <audio id="ambient-audio" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-ambient-relaxing-guitar-49.mp3" type="audio/mpeg">
-    </audio>
-    <div class="audio-control" id="audio-control">
-        <i class="fas fa-volume-up"></i>
+    <!-- Loading Screen -->
+    <div id="loading">
+        <div class="spinner"></div>
+        <p>Loading Visual Journey...</p>
     </div>
 
-    <!-- Hero Video Section -->
+    <!-- Hero Section -->
     <section id="hero">
         <video autoplay muted loop playsinline id="hero-video">
             <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
-            <h1 data-animate="fade-down">Infinite Moments Captured</h1>
-            <p data-animate="fade-up">Exploring the world through my lens</p>
+            <h1 data-animate="fade-down">Roshan Roy</h1>
+            <p data-animate="fade-up">Photographer & Visual Storyteller</p>
         </div>
     </section>
 
-    <!-- Infinite Content Sections -->
-    <main id="infinite-content">
-        <!-- Sections will be loaded dynamically -->
-    </main>
+    <!-- About Section -->
+    <section class="content-section">
+        <div class="about-container">
+            <div class="about-text" data-animate="fade-right">
+                <h2>About Me</h2>
+                <p>I'm Roshan Roy, a passionate photographer with over 8 years of experience capturing the world's beauty through my lens. My work focuses on authentic moments and the interplay of light and shadow.</p>
+                <p>Specializing in landscape and portrait photography, I strive to create images that evoke emotion and tell compelling stories.</p>
+                <div class="signature">Roshan Roy</div>
+            </div>
+            <div class="about-image" data-animate="fade-left">
+                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roshan Roy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="content-section dark-bg">
+        <h2 data-animate="fade-up">My Portfolio</h2>
+        <div class="photo-grid">
+            <div class="photo-item" data-animate="zoom-in">
+                <img src="https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg" alt="Landscape">
+            </div>
+            <div class="photo-item" data-animate="zoom-in">
+                <video autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="photo-item" data-animate="zoom-in">
+                <img src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg" alt="Portrait">
+            </div>
+            <div class="photo-item" data-animate="zoom-in">
+                <img src="https://images.pexels.com/photos/3244513/pexels-photo-3244513.jpeg" alt="Nature">
+            </div>
+            <div class="photo-item" data-animate="zoom-in">
+                <video autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-photographing-the-beach-3286-large.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="photo-item" data-animate="zoom-in">
+                <img src="https://images.pexels.com/photos/189349/pexels-photo-189349.jpeg" alt="Wildlife">
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-500px"></i></a>
-            <a href="#"><i class="fab fa-flickr"></i></a>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-500px"></i></a>
+                <a href="#"><i class="fab fa-flickr"></i></a>
+                <a href="#"><i class="fab fa-behance"></i></a>
+            </div>
+            <p class="copyright">© <span id="year"></span> Roshan Roy Photography. All rights reserved.</p>
+            <p class="credits">Created with <a href="https://rosh776.github.io/Web-Forge/" target="_blank">WebForge</a></p>
         </div>
-        <p>© <span id="year"></span> Infinite Photography | No rights reserved</p>
-        <p>All media from free sources (Pexels, Pixabay, Mixkit)</p>
     </footer>
 
     <script src="js/main.js"></script>
