@@ -3,80 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roshan | Photography Portfolio</title>
+    <title>Infinite Photography Journey</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading">
-        <div class="spinner"></div>
-        <p>Loading Roshan's Portfolio...</p>
+    <!-- Ambient Audio -->
+    <audio id="ambient-audio" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-ambient-relaxing-guitar-49.mp3" type="audio/mpeg">
+    </audio>
+    <div class="audio-control" id="audio-control">
+        <i class="fas fa-volume-up"></i>
     </div>
-    
-    <!-- Video Section -->
-    <section id="video-section">
-        <video id="main-video" preload="auto" muted playsinline autoplay loop>
-            <source src="assets/videos/hero-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
+
+    <!-- Hero Video Section -->
+    <section id="hero">
+        <video autoplay muted loop playsinline id="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
         </video>
-        <div class="scroll-prompt">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M19 12l-7 7-7-7"/>
-            </svg>
-            <span>Scroll to explore</span>
+        <div class="hero-content">
+            <h1 data-animate="fade-down">Infinite Moments Captured</h1>
+            <p data-animate="fade-up">Exploring the world through my lens</p>
         </div>
     </section>
-    
-    <!-- Content Section -->
-    <section id="content-section">
-        <!-- About Section -->
-        <div class="content-block">
-            <h1 data-animate="fade-up">Roshan's Photography Journey</h1>
-            <img src="assets/images/profile.jpg" alt="Roshan" class="about-photo" data-animate="zoom-in">
-            <div class="signature" data-animate="fade-up">Roshan</div>
-            <p class="hidden-text" data-animate="fade-up">I am a passionate photographer with a deep love for capturing the world through my lens.</p>
-            <div class="quote hidden-text" data-animate="fade-up">
-                "Every photograph I take is a piece of my soul, a fragment of time that I've preserved forever."
-            </div>
-        </div>
-        
-        <!-- Artistic Vision Parallax -->
-        <div class="parallax" style="background-image: url('assets/images/vision-bg.jpg')">
-            <div class="parallax-content">
-                <h2 data-animate="fade-up">My Artistic Vision</h2>
-                <p class="hidden-text" data-animate="fade-up">My vision combines technical precision with emotional storytelling...</p>
-                <!-- More content -->
-            </div>
-        </div>
-        
-        <!-- Gallery Section -->
-        <div class="content-block">
-            <h2 data-animate="fade-up">Featured Gallery</h2>
-            <div class="image-gallery">
-                <div class="gallery-item" data-animate="zoom-in">
-                    <img src="assets/images/gallery1.jpg" alt="Portrait">
-                </div>
-                <!-- More gallery items -->
-            </div>
-        </div>
-    </section>
-    
+
+    <!-- Infinite Content Sections -->
+    <main id="infinite-content">
+        <!-- Sections will be loaded dynamically -->
+    </main>
+
     <!-- Footer -->
     <footer>
-        <h2 data-animate="fade-up">Roshan's Photography</h2>
         <div class="social-links">
-            <a href="#" data-animate="fade-up"><i class="fab fa-instagram"></i></a>
-            <!-- More social links -->
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-500px"></i></a>
+            <a href="#"><i class="fab fa-flickr"></i></a>
         </div>
-        <p class="copyright" data-animate="fade-up">&copy; 2023 Roshan Photography</p>
-        <p class="creator" data-animate="fade-up">Created by <a href="https://rosh776.github.io/Web-Forge/" class="creator-link">WebForge</a></p>
+        <p>© <span id="year"></span> Infinite Photography | No rights reserved</p>
+        <p>All media from free sources (Pexels, Pixabay, Mixkit)</p>
     </footer>
-    
-    <!-- Mouse Follower -->
-    <div class="cursor-follower"></div>
-    
+
     <script src="js/main.js"></script>
 </body>
 </html>
