@@ -1,37 +1,96 @@
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Remove loading screen
-    setTimeout(() => {
-        document.getElementById('loading').style.opacity = '0';
-        setTimeout(() => {
-            document.getElementById('loading').remove();
-        }, 500);
-    }, 1500);
-    
-    // Scroll animation trigger
-    const animateOnScroll = () => {
-        const elements = document.querySelectorAll('[data-animate]');
-        const windowHeight = window.innerHeight;
-        
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            
-            if (elementPosition < windowHeight - 100) {
-                element.classList.add('animated');
-            }
-        });
-    };
-    
-    // Initialize animations
-    window.addEventListener('load', animateOnScroll);
-    window.addEventListener('scroll', animateOnScroll);
-    
-    // Add floating animation to random elements
-    document.querySelectorAll('.gallery-item').forEach((item, index) => {
-        if (index % 3 === 0) { // Every 3rd item
-            item.style.animation = 'float 4s ease-in-out infinite';
-            item.style.animationDelay = `${index * 0.2}s`;
-        }
-    });
-});
+/* ================ ANIMATION KEYFRAMES ================ */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px #4cc9f0; }
+    50% { box-shadow: 0 0 20px #4cc9f0; }
+}
+
+/* ================ SCROLL ANIMATIONS ================ */
+[data-animate] {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+[data-animate="fade-up"] {
+    transform: translateY(30px);
+}
+
+[data-animate="fade-down"] {
+    transform: translateY(-30px);
+}
+
+[data-animate="zoom-in"] {
+    transform: scale(0.8);
+}
+
+[data-animate].animated {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* ================ ELEMENT ANIMATIONS ================ */
+.gallery-item:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 15px 30px rgba(76,201,240,0.3);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.creator-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: #4cc9f0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.creator-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* ================ SPECIAL EFFECTS ================ */
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.glow {
+    animation: glow 2s infinite;
+}
+
+.scroll-prompt {
+    animation: float 2s ease-in-out infinite;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
