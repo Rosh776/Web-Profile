@@ -305,6 +305,14 @@
             padding: 50px 20px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+        
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .cta-button {
@@ -375,42 +383,78 @@
             color: #fff;
         }
         
-        .contact-form {
-            display: grid;
-            gap: 20px;
-            margin-top: 30px;
+        /* New Animation Styles */
+        .fade-in {
+            animation: fadeIn 1.5s ease forwards;
         }
         
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: white;
-            font-size: 1rem;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
+        .slide-up {
+            animation: slideUp 1s ease forwards;
         }
         
-        .contact-form button {
-            background: linear-gradient(45deg, #4cc9f0, #4895ef);
-            color: white;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .rotate {
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .creator-link {
+            color: #4cc9f0;
+            text-decoration: none;
             transition: all 0.3s ease;
+            position: relative;
         }
         
-        .contact-form button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(76,201,240,0.5);
+        .creator-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.7);
+        }
+        
+        .creator-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #4cc9f0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .creator-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
     </style>
 </head>
@@ -449,12 +493,16 @@
             </div>
         </div>
         
-        <!-- First Parallax Section -->
+        <!-- First Parallax Section - My Artistic Vision -->
         <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')">
             <div class="parallax-content">
                 <h2>My Artistic Vision</h2>
-                <p class="hidden-text">I believe that great photography comes from the perfect balance between technical precision and artistic intuition. My approach combines meticulous attention to detail with a deep appreciation for natural beauty.</p>
-                <p class="hidden-text">Whether I'm shooting landscapes, portraits, or street photography, I strive to find the perfect harmony between composition, light, and emotion.</p>
+                <p class="hidden-text">My artistic vision is rooted in the belief that photography should evoke emotion and tell a story. I see the world through a unique lens, finding beauty in both the grand landscapes and the smallest details.</p>
+                <p class="hidden-text">I'm particularly drawn to the interplay of light and shadow, and how they can transform an ordinary scene into something extraordinary. My work often explores the relationship between humanity and nature, capturing moments of connection and solitude.</p>
+                <p class="hidden-text">Through careful composition and attention to detail, I strive to create images that are not just seen, but felt. Each photograph is a carefully crafted balance of technical precision and emotional resonance.</p>
+                <div class="quote hidden-text">
+                    "The camera is my paintbrush, light is my palette, and the world is my canvas."
+                </div>
             </div>
         </div>
         
@@ -518,12 +566,14 @@
             </div>
         </div>
         
-        <!-- Second Parallax Section -->
+        <!-- Second Parallax Section - My Creative Process -->
         <div class="parallax" style="background-image: url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80')">
             <div class="parallax-content">
                 <h2>My Creative Process</h2>
-                <p class="hidden-text">Every project begins with understanding the story I want to tell. I immerse myself in the environment, study the light, and wait for that perfect moment when everything aligns.</p>
-                <p class="hidden-text">In post-production, I enhance but never manipulate - staying true to the authenticity of the moment while bringing out its inherent beauty.</p>
+                <p class="hidden-text">My creative process begins long before I press the shutter button. It starts with observation - learning to see beyond the obvious and discovering the hidden beauty in everyday scenes.</p>
+                <p class="hidden-text">I spend considerable time studying my subjects, understanding their unique characteristics, and waiting for the perfect moment when light, composition, and emotion align. Patience is key - some of my best shots came after hours or even days of waiting.</p>
+                <p class="hidden-text">In the field, I work primarily with natural light, using reflectors and diffusers when necessary. I believe in getting the shot right in-camera rather than relying on post-processing, though I do use digital tools to enhance and refine my images while staying true to the original scene.</p>
+                <p class="hidden-text">Each project follows a thoughtful workflow: concept development, location scouting, technical preparation, the shoot itself, careful selection, and finally, post-processing that respects the integrity of the original moment.</p>
             </div>
         </div>
         
@@ -558,34 +608,21 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Contact Section -->
-        <div class="content-block">
-            <h2>Let's Create Together</h2>
-            <p class="hidden-text">I'm always excited to collaborate on new projects and capture special moments. Reach out to discuss your photography needs.</p>
-            
-            <div class="contact-form">
-                <input type="text" placeholder="Your Name" class="hidden-text">
-                <input type="email" placeholder="Your Email" class="hidden-text">
-                <textarea placeholder="Tell me about your project" class="hidden-text"></textarea>
-                <button type="submit" class="hidden-text">Send Message</button>
-            </div>
-            
-            <div class="social-links">
-                <a href="#" class="hidden-text"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="hidden-text"><i class="fab fa-500px"></i></a>
-                <a href="#" class="hidden-text"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hidden-text"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
     </section>
     
     <!-- Footer -->
     <footer>
-        <h2>Roshan's Photography</h2>
-        <p>Capturing moments that last a lifetime</p>
-        <a href="#" class="cta-button">View Full Portfolio</a>
-        <p class="copyright">&copy; 2023 Roshan Photography. All rights reserved.</p>
+        <h2 class="slide-up">Roshan's Photography</h2>
+        <p class="fade-in">Capturing moments that last a lifetime</p>
+        <a href="#" class="cta-button pulse">View Full Portfolio</a>
+        <div class="social-links fade-in">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-500px"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p class="copyright fade-in">&copy; 2023 Roshan Photography. All rights reserved.</p>
+        <p class="creator fade-in">Created by <a href="https://rosh776.github.io/Web-Forge/" class="creator-link" target="_blank">WebForge</a></p>
     </footer>
     
     <!-- Mouse Follower -->
@@ -692,25 +729,12 @@
                     }
                 });
                 
-                // Animate form elements
-                document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form button').forEach((el, index) => {
-                    const elPosition = el.getBoundingClientRect().top;
-                    if (elPosition < windowHeight * 0.85) {
-                        setTimeout(() => {
-                            el.classList.add('visible');
-                        }, index * 100);
-                    }
-                });
-                
-                // Animate social links
-                document.querySelectorAll('.social-links a').forEach((link, index) => {
-                    const linkPosition = link.getBoundingClientRect().top;
-                    if (linkPosition < windowHeight * 0.85) {
-                        setTimeout(() => {
-                            link.classList.add('visible');
-                        }, index * 100);
-                    }
-                });
+                // Animate footer when near bottom
+                const footer = document.querySelector('footer');
+                const footerPosition = footer.getBoundingClientRect().top;
+                if (footerPosition < windowHeight * 0.85) {
+                    footer.classList.add('visible');
+                }
                 
                 lastScrollPosition = scrollPosition;
                 isScrolling = false;
